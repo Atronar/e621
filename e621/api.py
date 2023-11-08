@@ -34,8 +34,8 @@ class E621:
     def __init__(
         self,
         auth: Optional[Tuple[Username, ApiKey]] = None,
-        client_name: str = "e621-py",
-        client_version: str = "0.0.0",
+        client_name: str = "e621-py-stable",
+        client_version: str = "1.0.4",
         timeout: int = 10,
         extra_params: Optional[Dict[str, Any]] = None,
     ) -> None:
