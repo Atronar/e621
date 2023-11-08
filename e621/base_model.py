@@ -4,6 +4,7 @@ import pydantic
 import requests
 from backports.cached_property import cached_property
 from typing_extensions import Self
+from pydantic import ConfigDict
 
 if TYPE_CHECKING:
     from .api import E621
@@ -13,10 +14,8 @@ class BaseModel(pydantic.BaseModel):
     if TYPE_CHECKING:
         e621api: E621
     else:
-        e621api: Any
-
-    class Config:
-        keep_untouched = (cached_property,)
+        e621api: Any = None
+    model_config = ConfigDict(ignored_types=(cached_property,))
 
     @classmethod
     def from_list(cls, list: List[Dict[str, Any]], api: "E621", ignore_errors: bool = False) -> List[Self]:

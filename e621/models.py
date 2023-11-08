@@ -14,18 +14,18 @@ if TYPE_CHECKING:
 
 
 class File(BaseModel):
-    width: Optional[int]
-    height: Optional[int]
+    width: Optional[int] = None
+    height: Optional[int] = None
     ext: str
-    size: Optional[int]
-    md5: Optional[str]
-    url: Optional[str]
+    size: Optional[int] = None
+    md5: Optional[str] = None
+    url: Optional[str] = None
 
 
 class Preview(BaseModel):
     width: int
     height: int
-    url: Optional[str]
+    url: Optional[str] = None
 
 
 class Field720p(BaseModel):
@@ -56,7 +56,7 @@ class Sample(BaseModel):
     has: bool
     height: int
     width: int
-    url: Optional[str]
+    url: Optional[str] = None
     alternates: Alternates
 
 
@@ -87,7 +87,7 @@ class Flags(BaseModel):
 
 
 class Relationships(BaseModel):
-    parent_id: Optional[int]
+    parent_id: Optional[int] = None
     has_children: bool
     has_active_children: bool
     children: List[int]
@@ -103,7 +103,7 @@ class PostFlag(BaseModel):
     post_id: int
     reason: str
     is_resolved: bool
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     is_deletion: bool
     category: str
     creator_id: Optional[int] = None
@@ -114,11 +114,11 @@ class Tag(BaseModel):
     name: str
     post_count: int
     related_tags: str
-    related_tags_updated_at: Optional[str]
+    related_tags_updated_at: Optional[str] = None
     category: int
     is_locked: bool
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
 
 
 class TagAlias(BaseModel):
@@ -127,19 +127,19 @@ class TagAlias(BaseModel):
     reason: str
     creator_id: int
     created_at: str
-    forum_post_id: Optional[int]
-    updated_at: Optional[str]
-    forum_topic_id: Optional[int]
+    forum_post_id: Optional[int] = None
+    updated_at: Optional[str] = None
+    forum_topic_id: Optional[int] = None
     consequent_name: str
     status: str
     post_count: int
-    approver_id: Optional[int]
+    approver_id: Optional[int] = None
 
 
 class Note(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     creator_id: int
     x: int
     y: int
@@ -165,7 +165,7 @@ class User(BaseModel):
     can_approve_posts: bool
     can_upload_free: bool
     level_string: str
-    avatar_id: Optional[int]
+    avatar_id: Optional[int] = None
 
 
 class PostVersion(BaseModel):
@@ -173,13 +173,13 @@ class PostVersion(BaseModel):
     post_id: int
     tags: str
     updater_id: int
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     rating: str
-    parent_id: Optional[int]
+    parent_id: Optional[int] = None
     source: str
     description: str
-    reason: Optional[str]
-    locked_tags: Optional[str]
+    reason: Optional[str] = None
+    locked_tags: Optional[str] = None
     added_tags: List[str]
     removed_tags: List[str]
     added_locked_tags: List[str]
@@ -200,13 +200,13 @@ class PostApproval(BaseModel):
     user_id: int
     post_id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
 
 
 class NoteVersion(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     x: int
     y: int
     width: int
@@ -222,7 +222,7 @@ class NoteVersion(BaseModel):
 class WikiPage(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     title: str
     body: str
     creator_id: int
@@ -237,7 +237,7 @@ class WikiPage(BaseModel):
 class WikiPageVersion(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     title: str
     body: str
     updater_id: int
@@ -245,7 +245,7 @@ class WikiPageVersion(BaseModel):
     is_locked: bool
     other_names: List[str]
     is_deleted: bool
-    reason: Optional[str]
+    reason: Optional[str] = None
 
 
 class Url(BaseModel):
@@ -254,22 +254,22 @@ class Url(BaseModel):
     url: str
     normalized_url: str
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     is_active: bool
 
 
 class Artist(BaseModel):
     id: int
     name: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     is_active: bool
     other_names: List[str]
     group_name: str
-    linked_user_id: Optional[int]
+    linked_user_id: Optional[int] = None
     created_at: str
     creator_id: int
     is_locked: bool
-    notes: Optional[str]
+    notes: Optional[str] = None
     urls: List[Url]
 
 
@@ -279,7 +279,7 @@ class ArtistVersion(BaseModel):
     name: str
     updater_id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     is_active: bool
     other_names: List[str]
     group_name: str
@@ -291,7 +291,7 @@ class ArtistVersion(BaseModel):
 class TagTypeVersion(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     old_type: int
     new_type: int
     is_locked: bool
@@ -309,9 +309,9 @@ class TagImplication(BaseModel):
     consequent_name: str
     status: str
     forum_topic_id: int
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     descendant_names: List[str]
-    approver_id: Optional[int]
+    approver_id: Optional[int] = None
 
 
 class BulkUpdateRequest(BaseModel):
@@ -321,9 +321,9 @@ class BulkUpdateRequest(BaseModel):
     script: str
     status: str
     created_at: str
-    updated_at: Optional[str]
-    approver_id: Optional[int]
-    forum_post_id: Optional[int]
+    updated_at: Optional[str] = None
+    approver_id: Optional[int] = None
+    forum_post_id: Optional[int] = None
     title: str
 
 
@@ -331,22 +331,22 @@ class Blip(BaseModel):
     id: int
     creator_id: int
     body: str
-    response_to: Optional[int]
+    response_to: Optional[int] = None
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     is_hidden: bool
-    warning_type: Any
-    warning_user_id: Optional[int]
+    warning_type: Any = None
+    warning_user_id: Optional[int] = None
     creator_name: str
 
 
 class Takedown(BaseModel):
     id: int
     status: str
-    approver_id: Optional[int]
+    approver_id: Optional[int] = None
     reason_hidden: bool
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     post_count: int
 
 
@@ -357,7 +357,7 @@ class UserFeedback(BaseModel):
     created_at: str
     body: str
     category: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
 
 
 class ForumTopic(BaseModel):
@@ -370,7 +370,7 @@ class ForumTopic(BaseModel):
     is_locked: bool
     is_hidden: bool
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     category_id: int
     min_level: int
 
@@ -378,20 +378,20 @@ class ForumTopic(BaseModel):
 class ForumPost(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     body: str
     creator_id: int
     updater_id: int
     topic_id: int
     is_hidden: bool
-    warning_type: Any
-    warning_user_id: Optional[int]
+    warning_type: Any = None
+    warning_user_id: Optional[int] = None
 
 
 class PostSet(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     creator_id: int
     is_public: bool
     name: str
@@ -405,37 +405,37 @@ class PostSet(BaseModel):
 class Post(BaseModel):
     id: int
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     file_obj: Optional[File] = Field(default=None, alias="file")
-    file_url: Optional[str]
-    large_file_url: Optional[str]
-    preview_file_url: Optional[str]
-    file_ext: Optional[str]
-    file_size: Optional[int]
-    preview: Optional[Preview]
-    sample: Optional[Sample]
-    score: Union[Score, None, str]
-    tags: Optional[Tags]
-    locked_tags: Optional[List[str]]
-    tag_string_general: Optional[str]
-    tag_string_character: Optional[str]
-    tag_string_copyright: Optional[str]
-    tag_string_artist: Optional[str]
-    tag_string_meta: Optional[str]
-    change_seq: Optional[int]
-    flags: Optional[Flags]
+    file_url: Optional[str] = None
+    large_file_url: Optional[str] = None
+    preview_file_url: Optional[str] = None
+    file_ext: Optional[str] = None
+    file_size: Optional[int] = None
+    preview: Optional[Preview] = None
+    sample: Optional[Sample] = None
+    score: Union[Score, None, str] = None
+    tags: Optional[Tags] = None
+    locked_tags: Optional[List[str]] = None
+    tag_string_general: Optional[str] = None
+    tag_string_character: Optional[str] = None
+    tag_string_copyright: Optional[str] = None
+    tag_string_artist: Optional[str] = None
+    tag_string_meta: Optional[str] = None
+    change_seq: Optional[int] = None
+    flags: Optional[Flags] = None
     rating: str
-    fav_count: Optional[int]
-    sources: Optional[List[str]]
-    pools: Optional[List[int]]
-    relationships: Optional[Relationships]
-    approver_id: Optional[int]
+    fav_count: Optional[int] = None
+    sources: Optional[List[str]] = None
+    pools: Optional[List[int]] = None
+    relationships: Optional[Relationships] = None
+    approver_id: Optional[int] = None
     uploader_id: int
-    description: Optional[str]
-    comment_count: Optional[int]
-    is_favorited: Optional[bool]
-    has_notes: Optional[bool]
-    duration: Optional[float]
+    description: Optional[str] = None
+    comment_count: Optional[int] = None
+    is_favorited: Optional[bool] = None
+    has_notes: Optional[bool] = None
+    duration: Optional[float] = None
 
     @cached_property
     def all_tags(self) -> Set[str]:
@@ -505,12 +505,12 @@ class Pool(BaseModel, _PostsGetterMixin):
     id: int
     name: str
     created_at: str
-    updated_at: Optional[str]
+    updated_at: Optional[str] = None
     creator_id: int
     description: str
-    is_active: Optional[bool]
+    is_active: Optional[bool] = None
     category: str
-    is_deleted: Optional[bool]
+    is_deleted: Optional[bool] = None
     post_ids: List[int]
     creator_name: str
     post_count: int
